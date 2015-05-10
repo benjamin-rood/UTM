@@ -21,24 +21,24 @@ namespace utm {
     public:
         const domain_t corresponding_to_head_state;
         const domain_t corresponding_to_head_value;
-        const domain_t sets_head_state_to;
+        const domain_t sets_head_state;
         const headMove does_head_move;
-        const domain_t sets_head_value_to;
+        const domain_t writes_head_value;
         
         rule (domain_t s, domain_t v, headMove m, domain_t s2, domain_t v2) :
         corresponding_to_head_state{s},
         corresponding_to_head_value{v},
         does_head_move{m},
-        sets_head_state_to{s2},
-        sets_head_value_to{v2}
+        sets_head_state{s2},
+        writes_head_value{v2}
         {}
         
         rule (std::pair<domain_t, domain_t> identifier, headMove m, domain_t s2, domain_t v2) :
         corresponding_to_head_state{identifier.first},
         corresponding_to_head_value{identifier.second},
         does_head_move{m},
-        sets_head_state_to{s2},
-        sets_head_value_to{v2}
+        sets_head_state{s2},
+        writes_head_value{v2}
         {}
         
         ~rule ( void ) = default;
