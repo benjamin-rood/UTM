@@ -1,15 +1,9 @@
-//
-//  main.cpp
-//  UTM
-//
-//  Created by Benjamin Rood on 10/05/15.
-//  Copyright (c) 2015 bisr. All rights reserved.
-//
+// shell only implementation of a Universal Turing Machine under conditions per assignment for 159.331
 
 #include <iostream>
 
 int main(int argc, const char * argv[]) {
 	// insert code here...
-	std::cout << "Hello, World!\n";
+	
     return 0;
 }
