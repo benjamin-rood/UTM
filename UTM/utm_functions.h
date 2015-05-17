@@ -8,9 +8,14 @@
 
 namespace utm {
     void printProgramState ( utm::tape& memTape );
+    
     utm::rule makeRule ( std::string );
+    
     utm::tape readTapeFromFile ( std::string );
-    void initialiseProgramFromFile ( const std::ifstream& fileIn , utm::domain domain, utm::tape& memTape, utm::ruleTree& rules );
+    
+    void initialiseProgramFromFile ( const std::ifstream& fileIn ,
+     utm::domain& domain, utm::tape& memTape, utm::ruleTree& rules );
+    
     void moveHead ( utm::tape& memTape, utm::rule& rule );
 }
 

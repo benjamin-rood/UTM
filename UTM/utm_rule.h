@@ -15,7 +15,7 @@
 namespace utm {
     enum headMove { L = -1, R = 1 };
     
-    typedef uint32_t domain_t;
+    using domain_t = uint32_t;
     
     class rule {
     public:
