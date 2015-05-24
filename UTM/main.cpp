@@ -14,50 +14,34 @@ int main(int argc, const char * argv[]) {
     utm::domain activeDomain;
     
     std::ifstream in( argv[1], std::ios::in | std::ios::binary );
-    if ( in ) {
-        char c = 3;
-        for (int i = 0; i < 4; ++i)
-            in.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-        in.get(c);
-        activeDomain.max_states = (c-48);
-        fmt::print("{}", activeDomain.max_states);
-        in.ignore(1);
-        in.get(c);
-        activeDomain.max_values = (c-48);
-        fmt::print(" {}", activeDomain.max_values);
-        in.ignore(1);
-        in.get(c);
-        activeDomain.head_starting_position = (c-48);
-        fmt::print(" {}", activeDomain.head_starting_position);
-        in.ignore(1);
-        in.get(c);
-        activeDomain.machine_starting_state = (c-48);
-        fmt::print(" {}", activeDomain.machine_starting_state);
-        for (int i = 0; i < 4; ++i)
-            in.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-        fmt::print("\n");
-        in.get(c);
-        while (c != '#') {
-            activeTape.push_back(c-48);
-            fmt::print("{} ", *std::end(activeTape).operator--());
-            in.ignore(1);
-            in.get(c);
-        }
-        for (int i = 0; i < 3; ++i)
-            in.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-        in.get(c);
-        utm::domain_t a = static_cast<utm::domain_t>(c-48);
-        fmt::print("\n{}", a);
-        in.close();
+    
+    utm::initialiseProgramFromFile(in, activeDomain, activeTape, activeRules);
+    
+//    fmt::print("RULES:\n");
+//    for (auto& r : activeRules)
+//        utm::printRule(r.second);
+    
+    auto start_pos = activeTape.begin();
+    const int hsp = activeDomain.head_starting_position;
+    if (hsp < 0)
+        for (int i = 0 ; i != hsp ; --i, --start_pos) {}
+    else
+        for (int i = 0 ; i != hsp ; ++i, ++start_pos) {}
+    
+    utm::head head(start_pos, activeDomain.machine_starting_state, *start_pos);
+    
+    for (; head.position != activeTape.end(); head.position++)
+    {
+        head.value = *head.position;
+        fmt::print("{} ", head.value);
     }
+    fmt::print("\n");
     
+    for (auto& t : activeTape)
+        fmt::print("{} ", t);
+    fmt::print("\n");
     
-    
-//    auto head = std::begin(activeTape);
-//    for (auto i = 0; i < activeDomain.head_starting_position ; ++head) {}
-    
-    
-    
+    in.close();
     
     return 0;
 }

@@ -13,10 +13,12 @@ namespace utm {
     
     utm::tape readTapeFromFile ( std::string );
     
-    void initialiseProgramFromFile ( const std::ifstream& fileIn ,
-     utm::domain& domain, utm::tape& memTape, utm::ruleTree& rules );
+    void initialiseProgramFromFile ( std::ifstream& in ,
+     utm::domain& domain, utm::tape& tape, utm::ruleTree& rules );
     
     void moveHead ( utm::tape& memTape, utm::rule& rule );
+    
+    void printRule ( utm::rule r );
 }
 
 
