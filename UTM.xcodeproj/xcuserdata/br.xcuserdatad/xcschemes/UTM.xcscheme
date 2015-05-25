@@ -61,7 +61,7 @@
       </BuildableProductRunnable>
       <CommandLineArguments>
          <CommandLineArgument
-            argument = "tests/binary_increment.tmp"
+            argument = "tests/unary_subtraction.tmp"
             isEnabled = "YES">
          </CommandLineArgument>
       </CommandLineArguments>

@@ -100,7 +100,7 @@ void utm::moveHead ( utm::tape::iterator& head, utm::rule& rule, utm::tape& tape
     }
     else if (rule.does_head_move == 'R') {
         head++;
-        if (head == std::end(tape))
+        if (std::next(head) == std::end(tape))
             tape.emplace_back('B');
     }
     else {
@@ -111,11 +111,12 @@ void utm::moveHead ( utm::tape::iterator& head, utm::rule& rule, utm::tape& tape
 void utm::doStep ( utm::tape_t& state, utm::tape::iterator& head, utm::ruleTree rules, utm::tape& tape )
 {
     auto rule = getRule(state, head, rules);
-    //utm::printRule(rule);
-    //fmt::print("writing {} at head\n", rule.writes_head_value);
+//    fmt::print("\n");
+//    utm::printRule(rule);
+//    fmt::print("writing {} at head\n", rule.writes_head_value);
     *head = rule.writes_head_value;
     utm::moveHead(head, rule, tape);
-    //fmt::print("head moves {}\n", rule.does_head_move);
+//    fmt::print("head moves {}\n", rule.does_head_move);
     state = rule.sets_head_state;
-    //fmt::print("set state to {}\n", state);
+//    fmt::print("set state to {}\n", state);
 }
