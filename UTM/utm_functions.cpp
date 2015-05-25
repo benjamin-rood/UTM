@@ -94,14 +94,15 @@ void utm::printTape ( const utm::tape& tape, const utm::tape::iterator& head )
 void utm::moveHead ( utm::tape::iterator& head, utm::rule& rule, utm::tape& tape )
 {
     if (rule.does_head_move == 'L') {
-        head--;
         if (head == std::begin(tape))
             tape.emplace_front('B');
+        head--;
+        
     }
     else if (rule.does_head_move == 'R') {
-        head++;
         if (std::next(head) == std::end(tape))
             tape.emplace_back('B');
+        head++;
     }
     else {
         

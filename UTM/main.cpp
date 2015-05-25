@@ -29,6 +29,14 @@ int main(int argc, const char * argv[]) {
     activeTape.emplace_front('B');
     activeTape.emplace_back('B');
     
+    fmt::print("{}-state {}-symbol Turing Program\n\n", activeDomain.max_states, activeDomain.max_values);
+    
+    fmt::print("Rules:\n");
+    
+    for (auto& r : activeRules)
+        utm::printRule(r.second);
+    fmt::print("\n\n");
+    
     int pc = 0;
     while (machineState != 'H') {
         utm::printProgramState(activeTape, machineState, head, pc++);
