@@ -17,29 +17,25 @@ int main(int argc, const char * argv[]) {
     
     utm::initialiseProgramFromFile(in, activeDomain, activeTape, activeRules);
     
-//    fmt::print("RULES:\n");
-//    for (auto& r : activeRules)
-//        utm::printRule(r.second);
+    utm::tape_t machineState = activeDomain.machine_starting_state;
     
-    auto start_pos = activeTape.begin();
+    auto head = activeTape.begin();
     const int hsp = activeDomain.head_starting_position;
     if (hsp < 0)
-        for (int i = 0 ; i != hsp ; --i, --start_pos) {}
+        for (int i = 0 ; i != hsp ; --i, --head) {}
     else
-        for (int i = 0 ; i != hsp ; ++i, ++start_pos) {}
+        for (int i = 0 ; i != hsp ; ++i, ++head) {}
     
-    utm::head head(start_pos, activeDomain.machine_starting_state, *start_pos);
+    activeTape.emplace_front('B');
+    activeTape.emplace_back('B');
     
-    for (; head.position != activeTape.end(); head.position++)
-    {
-        head.value = *head.position;
-        fmt::print("{} ", head.value);
+    while (machineState != 'H') {
+        utm::printTape(activeTape, head);
+        fmt::print("\n");
+        utm::doStep(machineState, head, activeRules, activeTape);
+        fmt::print("\n");
     }
-    fmt::print("\n");
     
-    for (auto& t : activeTape)
-        fmt::print("{} ", t);
-    fmt::print("\n");
     
     in.close();
     

@@ -13,7 +13,7 @@
 #include "utm_types.h"
 
 namespace utm {
-    using ruleTree = std::map<std::pair<domain_t, domain_t>, utm::rule>;
+    using ruleTree = std::map<std::pair<tape_t, tape_t>, utm::rule>;
     
     
 }

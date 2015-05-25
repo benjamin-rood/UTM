@@ -13,19 +13,19 @@
 #include <utility>
 
 namespace utm {
-    enum headMove { L = -1, R = 1 };
+    enum headMove { L = 0, R = 1 };
     
-    using domain_t = char;
+    using tape_t = char;
     
     class rule {
     public:
-        const domain_t corresponding_to_head_state;
-        const domain_t corresponding_to_head_value;
-        const domain_t sets_head_state;
-        const domain_t does_head_move;
-        const domain_t writes_head_value;
+        const tape_t corresponding_to_head_state;
+        const tape_t corresponding_to_head_value;
+        const tape_t sets_head_state;
+        const tape_t does_head_move;
+        const tape_t writes_head_value;
         
-        rule (domain_t s, domain_t v, domain_t m, domain_t s2, domain_t v2) :
+        rule (tape_t s, tape_t v, tape_t m, tape_t s2, tape_t v2) :
         corresponding_to_head_state{s},
         corresponding_to_head_value{v},
         does_head_move{m},
@@ -33,7 +33,7 @@ namespace utm {
         writes_head_value{v2}
         {}
         
-        rule (std::pair<domain_t, domain_t> identifier, domain_t m, domain_t s2, domain_t v2) :
+        rule (std::pair<tape_t, tape_t> identifier, tape_t m, tape_t s2, tape_t v2) :
         corresponding_to_head_state{identifier.first},
         corresponding_to_head_value{identifier.second},
         does_head_move{m},
@@ -45,7 +45,7 @@ namespace utm {
         rule ( const rule& r ) = default;
         rule ( rule&& r ) = default;
         
-        std::pair<domain_t, domain_t> identifier ( void ) const {
+        std::pair<tape_t, tape_t> identifier ( void ) const {
             return std::make_pair(corresponding_to_head_state, corresponding_to_head_value);
         }
         
