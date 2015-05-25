@@ -75,6 +75,12 @@ void utm::printRule( const utm::rule& r )
                r.does_head_move, r.sets_head_state);
 }
 
+void utm::printProgramState ( utm::tape& tape, utm::tape_t& state, const utm::tape::iterator& head, int programCount )
+{
+    fmt::print("{:<3}:({})", programCount, state);
+    utm::printTape(tape, head);
+}
+
 void utm::printTape ( const utm::tape& tape, const utm::tape::iterator& head )
 {
     for (auto it = std::begin(tape); it != std::end(tape); it++) {
@@ -105,11 +111,11 @@ void utm::moveHead ( utm::tape::iterator& head, utm::rule& rule, utm::tape& tape
 void utm::doStep ( utm::tape_t& state, utm::tape::iterator& head, utm::ruleTree rules, utm::tape& tape )
 {
     auto rule = getRule(state, head, rules);
-    utm::printRule(rule);
-    fmt::print("writing {} at head\n", rule.writes_head_value);
+    //utm::printRule(rule);
+    //fmt::print("writing {} at head\n", rule.writes_head_value);
     *head = rule.writes_head_value;
     utm::moveHead(head, rule, tape);
-    fmt::print("head moves {}\n", rule.does_head_move);
+    //fmt::print("head moves {}\n", rule.does_head_move);
     state = rule.sets_head_state;
-    fmt::print("set state to {}\n", state);
+    //fmt::print("set state to {}\n", state);
 }

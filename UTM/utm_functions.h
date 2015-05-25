@@ -7,7 +7,7 @@
 #include "utm_types.h"
 
 namespace utm {
-    void printProgramState ( utm::tape& memTape );
+    void printProgramState ( utm::tape& tape, utm::tape_t& state, const utm::tape::iterator& head, int programCount );
     
     void initialiseProgramFromFile ( std::ifstream& in ,
     domain& domain, utm::tape& tape, utm::ruleTree& rules );

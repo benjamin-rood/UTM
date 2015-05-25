@@ -29,12 +29,15 @@ int main(int argc, const char * argv[]) {
     activeTape.emplace_front('B');
     activeTape.emplace_back('B');
     
+    int pc = 0;
     while (machineState != 'H') {
-        utm::printTape(activeTape, head);
-        fmt::print("\n");
+        utm::printProgramState(activeTape, machineState, head, pc++);
         utm::doStep(machineState, head, activeRules, activeTape);
         fmt::print("\n");
     }
+    utm::printProgramState(activeTape, machineState, head, pc++);
+    fmt::print("\n");
+    fmt::print("Program Halted\n");
     
     
     in.close();
