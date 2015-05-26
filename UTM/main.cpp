@@ -1,5 +1,9 @@
 // shell only implementation of a Universal Turing Machine under conditions per assignment for 159.331
 
+/* Rood, Benjamin, 13145989, Assignment 2, 159.331 */
+/* explain what the program is doing . . . */
+
+
 #include "cppformat/format.cc"
 #include <fstream>
 #include "utm_functions.h"
@@ -8,6 +12,11 @@
 
 
 int main(int argc, const char * argv[]) {
+    
+    fmt::print("----------------------------------------\n");
+    fmt::print(" 159.331 Assignment 2 Semester 1 2015   \n");
+    fmt::print(" Submitted by: Rood, Benjamin, 13145989 \n");
+    fmt::print("----------------------------------------\n");
     
     utm::ruleTree activeRules;
     utm::tape activeTape;
@@ -33,8 +42,17 @@ int main(int argc, const char * argv[]) {
     
     fmt::print("Rules:\n");
     
-    for (auto& r : activeRules)
-        utm::printRule(r.second);
+    utm::tape_t prevState = '?';
+    for (auto& r : activeRules) {
+        if (r.second.corresponding_to_head_state != prevState) {
+            fmt::print("{:>2}:\t", r.second.corresponding_to_head_state);
+            prevState = r.second.corresponding_to_head_state;
+        }
+        else fmt::print("\t");
+        fmt::print("{} {} {} {}\n",
+                   r.second.corresponding_to_head_value, r.second.writes_head_value,
+                   r.second.does_head_move, r.second.sets_head_state);
+    }
     fmt::print("\n\n");
     
     int pc = 0;

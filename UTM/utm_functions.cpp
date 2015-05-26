@@ -68,8 +68,8 @@ utm::rule& utm::getRule ( utm::tape_t& state, const utm::tape::iterator& head, u
 void utm::printRule( const utm::rule& r )
 {
     fmt::print("if:\t\tstate = {} && head = {}\n"
-               "then:\tset head to {} && move head {} "
-               "&& set state to {}\n"
+               "then:\twrite {} at head THEN move head {} "
+               "THEN set state to {}\n\n"
                , r.corresponding_to_head_state,
                r.corresponding_to_head_value, r.writes_head_value,
                r.does_head_move, r.sets_head_state);
@@ -77,7 +77,7 @@ void utm::printRule( const utm::rule& r )
 
 void utm::printProgramState ( utm::tape& tape, utm::tape_t& state, const utm::tape::iterator& head, int programCount )
 {
-    fmt::print("{:<3}:({})", programCount, state);
+    fmt::print("{:>3}:({})", programCount, state);
     utm::printTape(tape, head);
 }
 
