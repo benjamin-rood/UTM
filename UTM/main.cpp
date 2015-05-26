@@ -1,11 +1,12 @@
-// shell only implementation of a Universal Turing Machine under conditions per assignment for 159.331
-
+// cppformat Copyright (c) 2012 - 2015, Victor Zverovich
 /* Rood, Benjamin, 13145989, Assignment 2, 159.331 */
-/* explain what the program is doing . . . */
+/*
+ Uses
+ */
 
 
-#include "cppformat/format.cc"
-#include <fstream>
+//#include "cppformat/format.cc"
+//#include <fstream>
 #include "utm_functions.h"
 #include "utm_data_structures.h"
 #include "utm_types.h"
@@ -22,9 +23,9 @@ int main(int argc, const char * argv[]) {
     utm::tape activeTape;
     utm::domain activeDomain;
     
-    std::ifstream in( argv[1], std::ios::in | std::ios::binary );
+    std::string filepath = argv[1];
     
-    utm::initialiseProgramFromFile(in, activeDomain, activeTape, activeRules);
+    utm::initialiseProgramFromFile(filepath, activeDomain, activeTape, activeRules);
     
     utm::tape_t machineState = activeDomain.machine_starting_state;
     
@@ -64,9 +65,6 @@ int main(int argc, const char * argv[]) {
     utm::printProgramState(activeTape, machineState, head, pc++);
     fmt::print("\n");
     fmt::print("Program Halted\n");
-    
-    
-    in.close();
     
     return 0;
 }
