@@ -31,6 +31,8 @@
 		238144271AFF168D00499FCA /* utm_functions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = utm_functions.h; sourceTree = "<group>"; };
 		238144281AFF176700499FCA /* utm_data_structures.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = utm_data_structures.h; sourceTree = "<group>"; };
 		238144291AFF1E0F00499FCA /* utm_types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = utm_types.h; sourceTree = "<group>"; };
+		23CA82DD1B1593BD00815683 /* cppformat */ = {isa = PBXFileReference; lastKnownFileType = folder; path = cppformat; sourceTree = "<group>"; };
+		23CA82DE1B1593BD00815683 /* tests */ = {isa = PBXFileReference; lastKnownFileType = folder; path = tests; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +71,8 @@
 				238144281AFF176700499FCA /* utm_data_structures.h */,
 				238144261AFF04A600499FCA /* utm_rule.h */,
 				23009C701B14E6ED00D4308A /* makefile */,
+				23CA82DD1B1593BD00815683 /* cppformat */,
+				23CA82DE1B1593BD00815683 /* tests */,
 			);
 			path = UTM;
 			sourceTree = "<group>";

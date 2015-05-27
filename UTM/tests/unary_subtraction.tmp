@@ -1,0 +1,36 @@
+# Unary Subtraction (unary_subtraction.tmp)
+# Subtracts two unary numbers
+# number of states | number of values | initial position of the head | initial state of the head
+#
+8 2 5 0
+#
+# initial state of the tape
+#
+1 1 1 B 1 1 1 1 1 1 1
+#
+# set of rules
+# 
+0 B B L 1
+0 0 0 L 0
+0 1 1 L 0
+1 B B R 2
+1 0 0 L 1
+1 1 1 L 1
+2 B B L 4
+2 0 0 R 2
+2 1 0 R 3
+3 B B R 7
+3 0 0 R 3
+3 1 1 R 3
+4 B B R 5
+4 0 0 L 4
+4 1 1 L 4
+5 B B R 6
+5 0 B R 5
+5 1 1 R 5
+6 B B L H
+6 0 B R 6
+6 1 1 R 6
+7 B B L H
+7 0 0 R 7
+7 1 0 L 0

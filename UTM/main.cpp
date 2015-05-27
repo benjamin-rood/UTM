@@ -23,6 +23,15 @@ int main(int argc, const char * argv[]) {
     utm::tape activeTape;
     utm::domain activeDomain;
     
+    if (argc < 2) {
+        std::cerr << "Error: Missing input file argument.\n";
+        exit(EXIT_SUCCESS);
+    }
+    if (argc > 2) {
+        std::cerr << "Error: Too many arguments.\n";
+        exit(EXIT_SUCCESS);
+    }
+    
     std::string filepath = argv[1];
     
     utm::initialiseProgramFromFile(filepath, activeDomain, activeTape, activeRules);
