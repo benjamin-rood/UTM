@@ -4,7 +4,6 @@
 #include <fstream>
 #include <string>
 #include "cppformat/format.cc"
-#include "utm_data_structures.h"
 #include "utm_types.h"
 
 namespace utm {

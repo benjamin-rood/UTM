@@ -9,7 +9,6 @@
 #ifndef UTM_utm_rule_h
 #define UTM_utm_rule_h
 
-#include <iostream>
 #include <utility>
 
 namespace utm {

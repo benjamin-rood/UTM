@@ -10,11 +10,15 @@
 #define UTM_utm_types_h
 
 #include <list>
+#include <map>
 #include "utm_rule.h"
 
 
 namespace utm {
+    
     using tape = std::list<tape_t>; //  welllllll, until I do a custom vector type, we have no choice but to use an alias to a vector.
+    
+    using ruleTree = std::map<std::pair<tape_t, tape_t>, utm::rule>;
     
     typedef struct domain {
         uint32_t    max_states;
