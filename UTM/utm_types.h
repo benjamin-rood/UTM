@@ -16,7 +16,7 @@
 
 namespace utm {
     
-    using tape = std::list<tape_t>; //  welllllll, until I do a custom vector type, we have no choice but to use an alias to a vector.
+    using tape = std::list<tape_t>;
     
     using ruleTree = std::map<std::pair<tape_t, tape_t>, utm::rule>;
     
